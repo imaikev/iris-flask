@@ -18,8 +18,16 @@ def make_predict():
     predict_request = np.array(predict_request)
     predict_request = predict_request.reshape(1, -1)
     predictions = rfc.predict(predict_request)
+    
+    switcher = {
+        0: "setosa",
+        1: "versicolor",
+        2: "virginica"
+    }
 
-    return jsonify(result=predictions.tolist())
+    variedad = switcher.get(predictions)
+    
+    return jsonify(result=variedad.tolist())
 
 if __name__ == '__main__':
     app.run (host="0.0.0.0", port= 8080)
