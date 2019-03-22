@@ -7,6 +7,10 @@ from flask import Flask, jsonify, request
 rfc = pickle.load(open('iris_rfc.pkl', 'rb'))
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "Api - Predict Iris Dataset"
+
 @app.route('/api', methods=['POST'])
 def make_predict():
     data = request.get_json(force=True)
