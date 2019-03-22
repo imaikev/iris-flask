@@ -24,6 +24,8 @@ def make_predict():
         1: "versicolor",
         2: "virginica"
     }
+    
+    print predictions 
 
     variedad = switcher.get(predictions)
     
