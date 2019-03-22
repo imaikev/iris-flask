@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Api - Predict Iris Dataset"
+    return "API - Iris Dataset"
 
 @app.route('/api', methods=['POST'])
 def make_predict():
@@ -24,12 +24,8 @@ def make_predict():
         1: "versicolor",
         2: "virginica"
     }
-    
-    print predictions 
-
-    variedad = switcher.get(predictions)
-    
-    return jsonify(result=variedad.tolist())
+      
+    return jsonify(result=predictions.tolist())
 
 if __name__ == '__main__':
     app.run (host="0.0.0.0", port= 8080)
