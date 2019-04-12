@@ -1,7 +1,7 @@
 import pickle
 import numpy as np
 import pandas as pd
-from flask import Flask, jsonify, request , socket
+from flask import Flask, jsonify, request 
 
 #Carga el modelo cuando inicia
 rfc = pickle.load(open('iris_rfc.pkl', 'rb'))
