@@ -1,7 +1,7 @@
 import pickle
 import numpy as np
 import pandas as pd
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request , socket
 
 #Carga el modelo cuando inicia
 rfc = pickle.load(open('iris_rfc.pkl', 'rb'))
@@ -20,7 +20,8 @@ def make_predict():
     predict_request = predict_request.reshape(1, -1)
     predictions = rfc.predict(predict_request)
           
-    return jsonify(categoria=predictions.tolist())
+    #return jsonify(categoria=predictions.tolist())
+    return jsonify(categoria=predictions.tolist()) , 'server': socket.gethostname())
 
 # Inicia el web service en el puerto 8080 y habilita multi hilo
 if __name__ == '__main__':
