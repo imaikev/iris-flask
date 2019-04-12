@@ -3,10 +3,11 @@ import numpy as np
 import pandas as pd
 from flask import Flask, jsonify, request
 
-
+#Carga el modelo cuando inicia
 rfc = pickle.load(open('iris_rfc.pkl', 'rb'))
 app = Flask(__name__)
 
+#Define las rutas/funciones de la app
 @app.route('/')
 def home():
     return "API - Iris Dataset"
@@ -18,14 +19,9 @@ def make_predict():
     predict_request = np.array(predict_request)
     predict_request = predict_request.reshape(1, -1)
     predictions = rfc.predict(predict_request)
-    
-    switcher = {
-        0: "setosa",
-        1: "versicolor",
-        2: "virginica"
-    }
-      
-    return jsonify(result=predictions.tolist())
+          
+    return jsonify(resultado=predictions.tolist())
 
+# Inicia el web service en el puerto 8080 y habilita multi hilo
 if __name__ == '__main__':
     app.run (host="0.0.0.0", port= 8080,threaded=True)
