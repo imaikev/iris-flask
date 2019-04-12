@@ -23,6 +23,6 @@ def make_predict():
     return jsonify(categoria=predictions.tolist())
     
 
-# Inicia el web service en el puerto 8080 y habilita multi hilo
+# Inicia el web service en el puerto 8080 y habilita multihilo
 if __name__ == '__main__':
     app.run (host="0.0.0.0", port= 8080,threaded=True)
