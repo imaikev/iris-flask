@@ -20,7 +20,7 @@ def make_predict():
     predict_request = predict_request.reshape(1, -1)
     predictions = rfc.predict(predict_request)
           
-    return jsonify(resultado=predictions.tolist())
+    return jsonify(categoria=predictions.tolist())
 
 # Inicia el web service en el puerto 8080 y habilita multi hilo
 if __name__ == '__main__':
